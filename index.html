@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Speech Recognition</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <h1>Los tres cerditos</h1>
+    <div class="jumbotron">
+      <p class="first">Había una vez tres cerditos que eran hermanos</p>
+      <p class="second">y vivían en el corazón del bosque.</p> 
+    </div>
+  </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+<script>
+if (annyang) {
+  console.log('test');
+  // Let's define our first command. First the text we expect, and then the function it should call
+  var commands = {
+    'Había una vez tres cerditos que eran hermanos': function() {
+      $('.first').css('color','red');
+    },
+    'y vivían en el corazón del bosque': function() {
+      $('.second').css('color','red');
+    },
+  };
+  annyang.setLanguage('es-PE');
+  // Add our commands to annyang
+  annyang.addCommands(commands);
+  annyang.debug(true);
+  // Start listening. You can call this here, or attach this call to an event, button, etc.
+  annyang.start();
+}
+</script>
+</script>
+</html>
